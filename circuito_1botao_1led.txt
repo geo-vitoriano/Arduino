@@ -1,0 +1,36 @@
+/**
+* Esse circuito tem como objetivo licar no botão e acender o led e depois clicar e apagar o led.
+*/
+
+// Criação de uma definição no código 
+#define OFF 0
+#define ON 1
+
+// Associação do equipamento com o número do pino
+const int led = 2;
+const int button = 3;
+// Estado inicial do button
+int state = OFF;
+
+
+void setup(){
+    pinMode(led, OUTPUT);
+    pinMode(button, INPUT); 
+}
+
+void loop(){
+  
+  //int val = digitalRead(button);
+  
+  if ( digitalRead(button) == HIGH ) {
+      digitalWrite(led, HIGH);
+  } else {
+      digitalWrite(led, LOW);
+  }
+  
+  
+  //digitalWrite(13, HIGH);
+  //delay(1000); // Wait for 1000 millisecond(s)
+  //digitalWrite(13, LOW);
+  //delay(1000); // Wait for 1000 millisecond(s)
+}

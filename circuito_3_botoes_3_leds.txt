@@ -1,0 +1,91 @@
+/**
+* Esse circuito tem como objetivo gerar um comportamento diferente nos 3 leds quando se aperta cada botão.
+*/
+
+// Definição das constantes
+const int led1 = 2;
+const int led2 = 3;
+const int led3 = 4;
+const int button1 = 5;
+const int button2 = 6;
+const int button3 = 7;
+
+
+
+
+
+void setup(){
+  pinMode(led1, OUTPUT);
+  pinMode(button1, INPUT);
+  pinMode(led2, OUTPUT);
+  pinMode(button2, INPUT);
+  pinMode(led3, OUTPUT);
+  pinMode(button3, INPUT);
+  
+  
+}
+
+void loop(){
+   // Leitura dos valores dos botões
+   int val1 = digitalRead(button1);
+   int val2 = digitalRead(button2);
+   int val3 = digitalRead(button3);
+   // Ao pressionar o botão 1, acender cada um dos LEDs durante 200 ms e depois apagá-lo também por 200 ms, sendo que a
+   // sequência de acionamento deve ser da esquerda para direita.
+   if ( val1 == HIGH ) {
+      for (int i = 1; i < 5; i++) {
+          digitalWrite(i, HIGH);
+          delay(200);
+          digitalWrite(i, LOW);
+          delay(200);
+      }
+     
+     //digitalWrite(led1, HIGH);  
+   } else {
+      //digitalWrite(led1, LOW); 
+   }
+   /*
+   Ao pressionar o botão 2, acender cada um dos LEDs durante 200 ms e depois apagá-lo também por 200 ms, sendo que a
+   sequência de acionamento deve ser da direita para esquerda.
+   */
+   if ( val2 == HIGH ) {
+       for (int i = 5; i > 0; i--) {
+           digitalWrite(i, HIGH);
+           delay(200);
+           digitalWrite(i, LOW);
+           delay(200);
+       }
+  
+      //digitalWrite(led2, HIGH);  
+   } else {
+      //digitalWrite(led2, LOW); 
+   }
+   /*
+   Ao pressionar o botão 3, acender cada um dos LEDs durante 200 ms e depois apagá-lo também por 200 ms, sendo que a
+   sequência de acionamento deve ser primeiro os LEDs de número ímpar (1, 3, 5, 7) e depois os LEDs de número par
+   (2, 4, 6, 8).
+   */
+   if ( val3 == HIGH ) {
+       for (int i = 1; i < 5; i++) {
+          if ( i % 2 == 0 ) {
+              digitalWrite(i, HIGH);
+              delay(200);
+              digitalWrite(i, LOW);
+              delay(200);
+          }
+       }
+       for (int i = 1; i < 5; i++) {
+          if ( i % 2 != 0 ) {
+              digitalWrite(i, HIGH);
+              delay(200);
+              digitalWrite(i, LOW);
+              delay(200);
+          }
+       }
+
+     
+      //digitalWrite(led3, HIGH);  
+   } else {
+      //digitalWrite(led3, LOW); 
+   }
+}

@@ -1,0 +1,112 @@
+/**
+* Esse circuito tem por objetivo fazer os led´s acenderem da esquerda para a direita e depois da direita para a esquerda.
+*/
+
+// Configuração da placa
+
+
+const int led1 = 1;
+const int led2 = 2;
+const int led3 = 3;
+const int led4 = 4;
+const int led5 = 5;
+const int led6 = 6;
+const int led7 = 7;
+const int led8 = 8;
+
+int variaveis[8] = {1,2,3,4,5,6,7,8};
+
+
+
+void setup(){
+   
+   // seta o valor dos pinos 
+   
+   pinMode(1, HIGH);
+   pinMode(led2, HIGH);
+   pinMode(led3, HIGH);
+   pinMode(led4, HIGH);
+   pinMode(led5, HIGH);
+   pinMode(led6, HIGH);
+   pinMode(led7, HIGH);
+   pinMode(led8, HIGH);
+   //Serial.begin(9600);
+   //Serial.println("TESTE");
+}
+
+void loop(){
+   // Acender cada um dos LEDs durante 200 ms e depois apagá-lo também por 200 ms, sendo que a sequência de
+   // acionamento deve ser da esquerda para direita.
+   for (int i = 1; i < 9; i++) {
+       digitalWrite(i, HIGH);
+       delay(200);
+       digitalWrite(i, LOW);
+       delay(200);
+   }
+  //Acender cada um dos LEDs durante 200 ms e depois apagá-lo também por 200 ms, sendo que a sequência de
+  //acionamento deve ser da direita para esquerda.
+  for (int i = 9; i > 0; i--) {
+       digitalWrite(i, HIGH);
+       delay(200);
+       digitalWrite(i, LOW);
+       delay(200);
+   }
+  
+  //Acender cada um dos LEDs durante 200 ms e depois apagá-lo também por 200 ms, sendo que a sequência de
+  //acionamento deve ser primeiro os LEDs de número ímpar​ (1, 3, 5, 7) e depois os LEDs de número par​ (2, 4, 6, 8).
+  for (int i = 1; i < 9; i++) {
+       if ( i % 2 == 0 ) {
+          digitalWrite(i, HIGH);
+          delay(200);
+          digitalWrite(i, LOW);
+          delay(200);
+       }
+   }
+  
+  for (int i = 1; i < 9; i++) {
+       if ( i % 2 != 0 ) {
+          digitalWrite(i, HIGH);
+          delay(200);
+          digitalWrite(i, LOW);
+          delay(200);
+       }
+   }
+  
+  
+   /*
+   
+   
+   digitalWrite(led1, HIGH);
+   delay(100);
+   digitalWrite(led1, LOW);
+   delay(100);
+   digitalWrite(led2, HIGH);
+   delay(100);
+   digitalWrite(led2, LOW);
+   delay(100);
+   digitalWrite(led3, HIGH);
+   delay(100);
+   digitalWrite(led3, LOW);
+   delay(100);
+   digitalWrite(led4, HIGH);
+   delay(100);
+   digitalWrite(led4, LOW);
+   delay(100);
+   digitalWrite(led5, HIGH);
+   delay(100);
+   digitalWrite(led5, LOW);
+   delay(100);
+   digitalWrite(led6, HIGH);
+   delay(100);
+   digitalWrite(led6, LOW);
+   delay(100);
+   digitalWrite(led7, HIGH);
+   delay(100);
+   digitalWrite(led7, LOW);
+   delay(100);
+   digitalWrite(led8, HIGH);
+   delay(100);
+   digitalWrite(led8, LOW);
+   delay(100);
+   */
+}

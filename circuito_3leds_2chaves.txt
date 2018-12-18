@@ -1,0 +1,45 @@
+/**
+* Esse circuito simula 3 leds e duas chaves para ligar e desligar
+*/
+
+// Definição das constantes que representam os sensores 
+// do exterior
+const int ideal = 2;
+const int muitoFrio = 3;
+const int muitoQuente = 4;
+const int th = 5;
+const int tc = 6; 
+
+void setup(){
+  pinMode(ideal, OUTPUT);
+  pinMode(muitoFrio, OUTPUT);
+  pinMode(muitoQuente, OUTPUT);
+  pinMode(th, INPUT);
+  pinMode(tc, INPUT);
+}
+
+void loop(){
+   // Leitura dos valores dos botões
+   int valTh = digitalRead(th);
+   int valTc = digitalRead(tc);
+   // Ao pressionar o botão 1, acender cada um dos LEDs durante 200 ms e depois apagá-lo também por 200 ms, sendo que a
+   // sequência de acionamento deve ser da esquerda para direita.
+   if ( valTh == LOW && valTc == LOW ) {
+       digitalWrite(ideal, HIGH);
+       digitalWrite(muitoQuente, LOW);
+       digitalWrite(muitoFrio, LOW);
+   } else if ( valTh == HIGH && valTc == LOW ) {
+       digitalWrite(muitoFrio, HIGH);
+       digitalWrite(muitoQuente, LOW);
+       digitalWrite(ideal, LOW);
+   } else if ( valTh == LOW && valTc == HIGH ) {
+       digitalWrite(muitoQuente, HIGH);
+       digitalWrite(muitoFrio, LOW);
+       digitalWrite(ideal, LOW);
+   } else {
+       digitalWrite(ideal, HIGH);
+       digitalWrite(muitoQuente, HIGH);
+       digitalWrite(muitoFrio, HIGH);
+   }
+   
+}

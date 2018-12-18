@@ -1,0 +1,44 @@
+//Declaração das variáveis dos leds e do sensor
+const int led[] = {5, 3};
+const int sensor = A0; // Sensor de Som KY-037
+
+//Função para piscar os leds
+void piscar();
+
+//Setup
+void setup() {
+  pinMode(led[0], OUTPUT); //Leds em modo OUTPUT(saída)
+  pinMode(led[1], OUTPUT); //Leds em modo OUTPUT(saída)
+  Serial.begin(9600); //Iniciar o serial
+  piscar(); //Piscar os leds
+}
+
+//Loop
+void loop() {
+  int valor = analogRead(sensor); //Valor lido pelo sensor
+  //Serial.println(valor);
+
+  if(valor >= 969 && valor <= 972) { //Se o valor estiver entre 969 e 972
+    Serial.println(valor); //Mostrar valor no serial
+    digitalWrite(led[0], HIGH); //Acender led 0
+    digitalWrite(led[1], HIGH); //Acender led 1
+    delay(3000); //Por 3 segundos
+  }
+  else { //Se não
+    digitalWrite(led[0], LOW); //Apagar led 0
+    digitalWrite(led[1], LOW); //Apagar led 1
+  }
+}
+
+//Piscar os 2 leds
+void piscar() {
+  for(int i = 0; i < 3; i++) {   //repetir 3 vezes:
+    digitalWrite(led[0], HIGH); //Acender led 0 
+    digitalWrite(led[1], HIGH); //Acender led 1
+    delay(150); //Aguardar 150ms
+    digitalWrite(led[0], LOW); //Apagar led 0
+    digitalWrite(led[1], LOW); //Apagar led 1
+    delay(150); //Aguardar 150ms
+  }
+}
+
